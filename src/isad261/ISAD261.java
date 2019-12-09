@@ -5,19 +5,18 @@
  */
 package isad261;
 
-import webconnect.WebConnection;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import static java.lang.String.format;
-import static java.lang.System.in;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.Scanner;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import traininfomation.TrainInfomation;
+import webconnect.WebConnection;
+
+
 
 /**
  *
@@ -31,13 +30,26 @@ public class ISAD261 {
      * @throws java.io.IOException
      */
     
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws MalformedURLException, IOException, ParseException {
     WebConnection con = new WebConnection();
-    System.out.println(con.getJson());
-    TrainInfomation system = new TrainInfomation();
-    String result = system.getListTrainAtStation("Plymouth");
-        System.out.println(system.getItem(1));
-  }
+//        String json = "[" + con.getJson() + "]";
+
+        System.out.println(con.getJson());
+        JSONParser parser = new JSONParser();
+        JSONArray jsons = (JSONArray) parser.parse(con.getJson());
+        for (int i = 0; i < jsons.size(); i++) {
+            JSONObject obj = (JSONObject) jsons.get(i);
+            System.out.println("obj: " + obj);
+            //JSONObject obj = new JSONObject(jsons.get(i));
+            
+        }
+        System.out.println(jsons);
+        
+    
+    
+//    String result = system.getListTrainAtStation("Plymouth");
+//        System.out.println(system.getItem(1));
+    }
 
   
     
