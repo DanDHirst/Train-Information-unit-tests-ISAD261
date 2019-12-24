@@ -5,6 +5,9 @@
  */
 package traininfomation;
 
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -16,19 +19,32 @@ import webconnect.WebConnection;
  * @author dhirst1
  */
 public class TrainInfomation { 
-    private JSONObject jsonObj = new JSONObject();
-    public TrainInfomation() throws ParseException{
+    private JSONArray jsons = new JSONArray();
+    public TrainInfomation() throws ParseException  {
         WebConnection con = new WebConnection();
-//        JSONParser parser = new JSONParser();
-//        JSONObject json = (JSONObject) parser.parse(con.getJson());
-        JSONArray array = new JSONArray();
-        array.add(con.getJson());
-        JSONObject obj = new JSONObject();
-        obj.put("Trains", array);
-        this.jsonObj = obj;
+        JSONParser parser = new JSONParser();
+         this.jsons = (JSONArray) parser.parse(con.getJson());
+        
     }
-    public String getListTrainAtStation(String Station){
-        return null;        
+    public ArrayList getListTrainAtStation(String Station){
+        ArrayList<String> trains = new ArrayList<>();
+        //loop for all train
+        for (int i = 0; i < jsons.size(); i++) {
+            JSONObject obj = (JSONObject) jsons.get(i);
+            JSONArray objs = (JSONArray) obj.get("stops");
+            int length = objs.size();
+            //loop thorugh all stations
+            for (int j = 0; j < length; j++) {
+                JSONObject tempObj = (JSONObject) objs.get(j);
+                if (tempObj.get("name").equals(Station)) {
+                    trains.add((String) tempObj.get("arrives"));
+                }
+                
+            }
+            
+        }
+        
+        return trains;
     }
     public String getListTrainAtPlatform(String Platform){
         return null;
@@ -39,7 +55,7 @@ public class TrainInfomation {
     public String getOverdueTrains(String Station){
         return null;
     }
-    public String getItem(int index){
-        return (String) jsonObj.get(index);
-    }
+//    public String getItem(int index){
+//        return (String) jsonObj.get(index);
+//    }
 }

@@ -6,16 +6,10 @@
 package isad261;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Iterator;
-import java.util.Scanner;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import java.util.ArrayList;
 import org.json.simple.parser.ParseException;
-import webconnect.WebConnection;
+import traininfomation.TrainInfomation;
 
 
 
@@ -32,34 +26,38 @@ public class ISAD261 {
      */
     
     public static void main(String[] args) throws MalformedURLException, IOException, ParseException {
-    WebConnection con = new WebConnection();
-//        String json = "[" + con.getJson() + "]";
-
-        JSONParser parser = new JSONParser();
-        JSONArray jsons = (JSONArray) parser.parse(con.getJson());
-        for (int i = 0; i < jsons.size(); i++) {
-            JSONObject obj = (JSONObject) jsons.get(i);
-//            System.out.println("obj: " + obj);
-            //JSONObject obj = new JSONObject(jsons.get(i));
-//            System.out.println(obj.get("stops"));
-            JSONArray objs = (JSONArray) obj.get("stops");
-//            System.out.println(objs.get(i));
-            int length = objs.size();
-            for (int j = 0; j < length; j++) {
-                JSONObject tempObj = (JSONObject) objs.get(j);
-                System.out.println(tempObj.get("arrives"));
-            }
-            System.out.println("new train");
-            
-            
-            
-        }
+//        WebConnection con = new WebConnection();
+//        JSONParser parser = new JSONParser();
+//        JSONArray jsons = (JSONArray) parser.parse(con.getJson());
+//        for (int i = 0; i < jsons.size(); i++) {
+//            JSONObject obj = (JSONObject) jsons.get(i);
+////            System.out.println("obj: " + obj);
+//            //JSONObject obj = new JSONObject(jsons.get(i));
+////            System.out.println(obj.get("stops"));
+//            JSONArray objs = (JSONArray) obj.get("stops");
+////            System.out.println(objs.get(i));
+//            int length = objs.size();
+//            for (int j = 0; j < length; j++) {
+//                JSONObject tempObj = (JSONObject) objs.get(j);
+//                System.out.println(tempObj.get("arrives"));
+//            }
+//            System.out.println("new train");
+//            
+//            
+//            
+//        }
 //        System.out.println(jsons);
         
     
     
 //    String result = system.getListTrainAtStation("Plymouth");
 //        System.out.println(system.getItem(1));
+
+
+
+    TrainInfomation trainStation = new TrainInfomation();
+    ArrayList<String> trainAtStation = trainStation.getListTrainAtStation("Plymouth");
+        System.out.println(trainAtStation);
     }
 
   
