@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Iterator;
 import java.util.Scanner;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -34,16 +35,26 @@ public class ISAD261 {
     WebConnection con = new WebConnection();
 //        String json = "[" + con.getJson() + "]";
 
-        System.out.println(con.getJson());
         JSONParser parser = new JSONParser();
         JSONArray jsons = (JSONArray) parser.parse(con.getJson());
         for (int i = 0; i < jsons.size(); i++) {
             JSONObject obj = (JSONObject) jsons.get(i);
-            System.out.println("obj: " + obj);
+//            System.out.println("obj: " + obj);
             //JSONObject obj = new JSONObject(jsons.get(i));
+//            System.out.println(obj.get("stops"));
+            JSONArray objs = (JSONArray) obj.get("stops");
+//            System.out.println(objs.get(i));
+            int length = objs.size();
+            for (int j = 0; j < length; j++) {
+                JSONObject tempObj = (JSONObject) objs.get(j);
+                System.out.println(tempObj.get("arrives"));
+            }
+            System.out.println("new train");
+            
+            
             
         }
-        System.out.println(jsons);
+//        System.out.println(jsons);
         
     
     
