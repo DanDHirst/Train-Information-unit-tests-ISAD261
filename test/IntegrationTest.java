@@ -6,6 +6,7 @@
 
 import integrationTest.TestGetListOfTrainswillCallAtStation;
 import integrationTest.TestGetListTrainAtPlatform;
+import integrationTest.TestOverDueTrains;
 import integrationTest.TestgetListTrainAtStation;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -19,7 +20,8 @@ import org.junit.runners.Suite;
  * @author dan
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses(value={TestGetListOfTrainswillCallAtStation.class , TestGetListTrainAtPlatform.class, TestgetListTrainAtStation.class })
+@Suite.SuiteClasses(value={TestGetListOfTrainswillCallAtStation.class , TestGetListTrainAtPlatform.class, TestgetListTrainAtStation.class 
+,TestOverDueTrains.class})
 public class IntegrationTest {
 
     @BeforeClass

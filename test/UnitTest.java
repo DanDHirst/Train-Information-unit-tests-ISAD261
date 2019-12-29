@@ -16,7 +16,7 @@ import org.junit.runners.Suite;
  * @author dan
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({IntegrationTest.class})
+@Suite.SuiteClasses({})
 public class UnitTest {
 
     @BeforeClass
