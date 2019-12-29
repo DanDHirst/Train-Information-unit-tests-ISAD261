@@ -1,9 +1,12 @@
+package integrationTest;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import java.util.ArrayList;
 import org.json.simple.parser.ParseException;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -11,6 +14,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import traininfomation.TrainInfo;
 import traininfomation.TrainInfomation;
 
 /**
@@ -46,8 +50,8 @@ public class TestgetListTrainAtStation {
     @Test
     public void getListTrainAtStation() throws ParseException{
         TrainInfomation system = new TrainInfomation();
-        String result = system.getListTrainAtStation("Plymouth");
-        if(result != null){
+        ArrayList<TrainInfo> result = system.getListTrainAtStation("Castle Cary");
+        if(result.size() != 0){
             assertTrue(true);
         }
         else{

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import org.json.simple.parser.ParseException;
+import traininfomation.TrainInfo;
 import traininfomation.TrainInfomation;
 
 
@@ -56,10 +57,19 @@ public class ISAD261 {
 
 
     TrainInfomation trainStation = new TrainInfomation();
-    ArrayList<String> trainAtStation = trainStation.getListTrainAtStation("Plymouth");
-        System.out.println(trainAtStation);
+    ArrayList<TrainInfo> trainAtStation = trainStation.getListTrainAtStation("Castle Cary");
+    ArrayList<TrainInfo> trainAtPlatform = trainStation.getListTrainAtPlatform("3");
+    for(TrainInfo tr : trainAtPlatform){
+        System.out.println(tr.getName());
+        System.out.println(tr.getArrives());
+        System.out.println(tr.getDeparts());
     }
-
+        System.out.println(trainAtPlatform.size());
+    
+    
+    }
+    
+    
   
     
 }
