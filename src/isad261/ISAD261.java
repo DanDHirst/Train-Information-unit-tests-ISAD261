@@ -59,12 +59,17 @@ public class ISAD261 {
     TrainInfomation trainStation = new TrainInfomation();
     ArrayList<TrainInfo> trainAtStation = trainStation.getListTrainAtStation("Castle Cary");
     ArrayList<TrainInfo> trainAtPlatform = trainStation.getListTrainAtPlatform("3");
-    for(TrainInfo tr : trainAtPlatform){
-        System.out.println(tr.getName());
-        System.out.println(tr.getArrives());
-        System.out.println(tr.getDeparts());
+    ArrayList<TrainInfo> trainAtcall = trainStation.getListOfTrainswillCallAtStation("Totnes","Plymouth");
+    ArrayList<String> trainOverdue = trainStation.getOverdueTrains("Plymouth", 1100);
+//    for(TrainInfo tr : trainAtcall){
+//        System.out.println(tr.getName());
+//        System.out.println(tr.getArrives());
+//        System.out.println(tr.getDeparts());
+//    }
+    for(String over : trainOverdue){
+        System.out.println(over);
     }
-        System.out.println(trainAtPlatform.size());
+        
     
     
     }

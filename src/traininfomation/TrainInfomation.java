@@ -6,8 +6,6 @@
 package traininfomation;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -76,13 +74,66 @@ public class TrainInfomation {
 
         return trains;
     }
-    public String getListOfTrainswillCallAtStation(String Source, String Destination){
-        return null;
+    public ArrayList getListOfTrainswillCallAtStation(String Source, String Destination){
+        ArrayList<TrainInfo> trains = new ArrayList<>();
+        //loop though all the trains
+        for (int i = 0; i < jsons.size(); i++) {
+            JSONObject obj = (JSONObject) jsons.get(i);
+            JSONArray objs = (JSONArray) obj.get("stops");
+                int length = objs.size();
+            //loop thorugh all stations
+                TrainInfo tempSource = null;
+                TrainInfo tempDest = null;
+                for (int j = 0; j < length; j++) {
+                    JSONObject tempObj = (JSONObject) objs.get(j);
+                    if (tempObj.get("name").equals(Source)) {
+                        String name = (String) tempObj.get("name");
+                        String arrives = (String) tempObj.get("arrives");
+                        String departs = (String) tempObj.get("departs");
+                        tempSource = new TrainInfo(name,arrives,departs);
+                    }
+                    if (tempObj.get("name").equals(Destination) && tempSource != null) {
+                        String name = (String) tempObj.get("name");
+                        String arrives = (String) tempObj.get("arrives");
+                        String departs = (String) tempObj.get("departs");
+                        tempDest = new TrainInfo(name,arrives,departs);
+                    }
+                    
+                    
+                    
+                }
+                if (tempSource != null && tempDest != null) {
+                    trains.add(tempSource);
+                    trains.add(tempDest);
+                
+            }
+                
+        }
+        
+        
+        return trains;
     }
-    public String getOverdueTrains(String Station){
-        return null;
+    public ArrayList getOverdueTrains(String Station, int time){
+        ArrayList<String> trainMessage = new ArrayList<>();
+        for (int i = 0; i < jsons.size(); i++) {
+            
+            JSONObject obj = (JSONObject) jsons.get(i);
+            JSONArray objs = (JSONArray) obj.get("stops");
+                int length = objs.size();
+                for (int j = 0; j < length; j++) { 
+                    JSONObject tempObj = (JSONObject) objs.get(j);
+                    if (tempObj.get("name").equals(Station) && time > Integer.parseInt((String) tempObj.get("arrives"))){
+                        String message = "The train arriving at " + tempObj.get("name") + " for "+ tempObj.get("arrives")
+                                + " is Overdue. We are sorry for any inconvenience this may have caused you!";
+                        trainMessage.add(message);
+                    }
+                    
+                } 
+        }
+        
+        return trainMessage;
     }
-//    public String getItem(int index){
-//        return (String) jsonObj.get(index);
-//    }
+    
 }
+
+
