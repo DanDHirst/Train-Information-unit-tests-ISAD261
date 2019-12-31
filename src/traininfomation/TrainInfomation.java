@@ -5,11 +5,13 @@
  */
 package traininfomation;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import webconnect.MockWebConnection;
 import webconnect.WebConnection;
 
 /**
@@ -24,6 +26,13 @@ public class TrainInfomation {
          this.jsons = (JSONArray) parser.parse(con.getJson());
         
     }
+    public TrainInfomation(String Mock) throws ParseException, IOException  {
+        MockWebConnection con = new MockWebConnection();
+        JSONParser parser = new JSONParser();
+         this.jsons = (JSONArray) parser.parse(con.getJson());
+        
+    }
+    
     public ArrayList getListTrainAtStation(String Station){
         ArrayList<TrainInfo> trains = new ArrayList<>();
         //loop for all train

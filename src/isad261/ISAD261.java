@@ -5,12 +5,18 @@
  */
 package isad261;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import traininfomation.TrainInfo;
 import traininfomation.TrainInfomation;
+import webconnect.MockWebConnection;
 
 
 
@@ -61,19 +67,32 @@ public class ISAD261 {
     ArrayList<TrainInfo> trainAtPlatform = trainStation.getListTrainAtPlatform("3");
     ArrayList<TrainInfo> trainAtcall = trainStation.getListOfTrainswillCallAtStation("Totnes","Plymouth");
     ArrayList<String> trainOverdue = trainStation.getOverdueTrains("Plymouth", 1100);
-//    for(TrainInfo tr : trainAtcall){
-//        System.out.println(tr.getName());
-//        System.out.println(tr.getArrives());
-//        System.out.println(tr.getDeparts());
-//    }
+    for(TrainInfo tr : trainAtStation){
+        System.out.println(tr.getName());
+        System.out.println(tr.getArrives());
+        System.out.println(tr.getDeparts());
+    }
     for(String over : trainOverdue){
         System.out.println(over);
     }
         
     
-    
+    MockWebConnection mock = new MockWebConnection();
+    mock.getJson();
+    TrainInfomation mocktrainStation = new TrainInfomation("mock");
+    ArrayList<TrainInfo> trainAtStationmock = mocktrainStation.getListTrainAtStation("Plymouth");
+    for(TrainInfo tr : trainAtStationmock){
+        System.out.println(tr.getName());
+        System.out.println(tr.getArrives());
+        System.out.println(tr.getDeparts());
     }
-    
+    }
+    //JSON parser object to parse read file
+        
+ 
+            
+ 
+
     
   
     
