@@ -122,6 +122,29 @@ public class TestListOfTrainsAtPlatform {
     }
     @Test 
     public void TestCorrectOutputforPlatform(){
+        this.trainAtPlatformmock = this.mocktrainStation.getListTrainAtPlatform("2");
+        assertEquals(trainAtPlatformmock.get(0).getName(), "Totnes");
+        assertEquals(trainAtPlatformmock.get(1).getName(), "Ivybridge");
+        assertEquals(trainAtPlatformmock.get(2).getName(), "Plymouth");
+        assertEquals(trainAtPlatformmock.get(3).getName(), "Saltash");
+        assertEquals(trainAtPlatformmock.get(4).getName(), "St Germans");
+        assertEquals(trainAtPlatformmock.get(5).getName(), "Liskeard");
+        assertEquals(trainAtPlatformmock.get(6).getName(), "Bodmin Parkway");
+        assertEquals(trainAtPlatformmock.get(7).getName(), "Par");
+        assertEquals(trainAtPlatformmock.get(8).getName(), "St Austell");
+        assertEquals(trainAtPlatformmock.get(9).getName(), "Truro");
+        assertEquals(trainAtPlatformmock.get(10).getName(), "Redruth");
+        assertEquals(trainAtPlatformmock.get(11).getName(), "Camborne");
+        assertEquals(trainAtPlatformmock.get(12).getName(), "Hayle");
+        assertEquals(trainAtPlatformmock.get(13).getName(), "St Erth");
+        assertEquals(trainAtPlatformmock.get(14).getName(), "Penzance");
         
     }
+    @Test 
+    public void TestPlatformReturnNumber(){
+        this.trainAtPlatformmock = this.mocktrainStation.getListTrainAtPlatform("2");
+        System.out.println(trainAtPlatformmock.size());
+        assertEquals("The platform returns amount of trains", trainAtPlatformmock.size(), 15);
+        
+    } 
 }
