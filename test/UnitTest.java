@@ -4,19 +4,23 @@
  * and open the template in the editor.
  */
 
+import integrationTest.TestOverDueTrains;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+import unittest.TestGetListOfTrainswillCallAtStation;
+import unittest.TestListOfTrainsAtPlatform;
+import unittest.TestListofTrainsCallBy;
 
 /**
  *
  * @author dan
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({})
+@Suite.SuiteClasses({TestGetListOfTrainswillCallAtStation.class, TestListOfTrainsAtPlatform.class , TestListofTrainsCallBy.class , TestOverDueTrains.class})
 public class UnitTest {
 
     @BeforeClass

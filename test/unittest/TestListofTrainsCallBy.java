@@ -5,20 +5,39 @@
  */
 package unittest;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.json.simple.parser.ParseException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import traininfomation.TrainInfo;
+import traininfomation.TrainInfomation;
+import webconnect.MockWebConnection;
 
 /**
  *
  * @author dan
  */
 public class TestListofTrainsCallBy {
-    
+    private MockWebConnection mockCon;
+    private ArrayList<TrainInfo> trainAtCallBymmock;
+    private TrainInfomation mocktrainStation;
     public TestListofTrainsCallBy() {
+        try {
+            this.mockCon = new MockWebConnection();
+            mockCon.getJson();
+            mocktrainStation = new TrainInfomation("mock");
+        } catch (IOException ex) {
+            Logger.getLogger(TestGetListOfTrainswillCallAtStation.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(TestGetListOfTrainswillCallAtStation.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @BeforeClass
@@ -44,6 +63,52 @@ public class TestListofTrainsCallBy {
     // public void hello() {}
     @Test 
     public void TestCheckCorrectValues(){
+        trainAtCallBymmock = mocktrainStation.getListOfTrainswillCallAtStation("Plymouth", "Liskeard");
+        assertEquals("check name is Plymouth", trainAtCallBymmock.get(0).getName(), "Plymouth");
+        assertEquals("check arrival time is 1029", trainAtCallBymmock.get(0).getArrives(), "1029");
+        assertEquals("check depart time is 1033", trainAtCallBymmock.get(0).getDeparts(), "1033");
         
+        assertEquals("check name is Liskeard", trainAtCallBymmock.get(1).getName(), "Liskeard");
+        assertEquals("check arrival time is 1100", trainAtCallBymmock.get(1).getArrives(), "1100");
+        assertEquals("check depart time is 1101", trainAtCallBymmock.get(1).getDeparts(), "1101");
+
     }
+    @Test 
+    public void TestCheckOrderOfTimes(){
+        trainAtCallBymmock = mocktrainStation.getListOfTrainswillCallAtStation("Teignmouth", "Dawlish");
+        assertEquals("check arrival time is 1028", trainAtCallBymmock.get(0).getArrives(), "1028");
+        assertEquals("check depart time is 1029", trainAtCallBymmock.get(0).getDeparts(), "1029");
+        
+        assertEquals("check arrival time is 1033", trainAtCallBymmock.get(1).getArrives(), "1033");
+        assertEquals("check depart time is 1034", trainAtCallBymmock.get(1).getDeparts(), "1034");
+    }
+    @Test 
+    public void TestCheckTheSourceAndDestinationSize(){
+        trainAtCallBymmock = mocktrainStation.getListOfTrainswillCallAtStation("Saltash", "Par");
+        if (trainAtCallBymmock.size() % 2 ==0) {
+            assertTrue("There is an even amount of objects", true);
+        }
+        else{
+            assertTrue("There is an odd number of objects", false);
+        }
+    }
+    @Test 
+    public void TestCheckIfOutputShouldBeNull(){
+        trainAtCallBymmock = mocktrainStation.getListOfTrainswillCallAtStation("2323523", "45345");
+        if (trainAtCallBymmock.size() ==0) {
+            assertTrue("The program returned null", true);
+        }
+        else{
+            assertTrue("The program returned items when it shouldnt have", false);
+        }
+    }
+    @Test 
+    public void TestCheckIfMissedOutAnyTrains(){
+        trainAtCallBymmock = mocktrainStation.getListOfTrainswillCallAtStation("Birmingham New Street", "Stockport");
+        assertEquals("There should only be two objects for this call", trainAtCallBymmock.size(),2);
+    }
+    
+    
+    
+    
 }

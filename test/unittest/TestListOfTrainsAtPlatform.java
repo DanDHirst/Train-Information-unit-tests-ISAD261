@@ -143,7 +143,6 @@ public class TestListOfTrainsAtPlatform {
     @Test 
     public void TestPlatformReturnNumber(){
         this.trainAtPlatformmock = this.mocktrainStation.getListTrainAtPlatform("2");
-        System.out.println(trainAtPlatformmock.size());
         assertEquals("The platform returns amount of trains", trainAtPlatformmock.size(), 15);
         
     } 
