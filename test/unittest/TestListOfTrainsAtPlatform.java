@@ -34,9 +34,9 @@ public class TestListOfTrainsAtPlatform {
             mockCon.getJson();
             mocktrainStation = new TrainInfomation("mock");
         } catch (IOException ex) {
-            Logger.getLogger(TestGetListOfTrainswillCallAtStation.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestGetListOfTrainswillAtStation.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
-            Logger.getLogger(TestGetListOfTrainswillCallAtStation.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestGetListOfTrainswillAtStation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

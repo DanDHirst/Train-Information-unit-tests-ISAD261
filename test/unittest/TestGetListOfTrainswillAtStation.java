@@ -26,19 +26,19 @@ import webconnect.MockWebConnection;
  *
  * @author dan
  */
-public class TestGetListOfTrainswillCallAtStation {
+public class TestGetListOfTrainswillAtStation {
     private MockWebConnection mockCon;
     private ArrayList<TrainInfo> trainAtStationmock;
     private TrainInfomation mocktrainStation;
-    public TestGetListOfTrainswillCallAtStation() {
+    public TestGetListOfTrainswillAtStation() {
         try {
             this.mockCon = new MockWebConnection();
             mockCon.getJson();
             mocktrainStation = new TrainInfomation("mock");
         } catch (IOException ex) {
-            Logger.getLogger(TestGetListOfTrainswillCallAtStation.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestGetListOfTrainswillAtStation.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
-            Logger.getLogger(TestGetListOfTrainswillCallAtStation.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestGetListOfTrainswillAtStation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -95,7 +95,7 @@ public class TestGetListOfTrainswillCallAtStation {
                 if (tr.getName().equals("Plymouth")) {
                     if ("1029".equals(tr.getArrives())) {
                         if ("1033".equals(tr.getDeparts())) {
-                            
+                            assertTrue("Station is correct", true);
                         }
                         else{
                             assertTrue("The program the wrong depart time it should have returned 1033 instead of: " +tr.getDeparts(), false);
@@ -109,7 +109,6 @@ public class TestGetListOfTrainswillCallAtStation {
                     assertTrue("The program the wrong name it should have returned plymouth instead of: " +tr.getName(), false);
                 }
             }
-            assertEquals(0,0);
             assertTrue("There is no trains for this String input", true);
         }
         else {

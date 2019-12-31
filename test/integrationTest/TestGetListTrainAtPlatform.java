@@ -17,14 +17,24 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import traininfomation.TrainInfo;
 import traininfomation.TrainInfomation;
+import webconnect.WebConnection;
 
 /**
  *
  * @author dan
  */
 public class TestGetListTrainAtPlatform {
-    
+    private WebConnection Con;
+    private ArrayList<TrainInfo> trainAtPlatform;
+    private TrainInfomation trainStation;
     public TestGetListTrainAtPlatform() {
+        try {
+            this.Con = new WebConnection();
+            Con.getJson();
+            trainStation = new TrainInfomation();
+        } catch (ParseException ex) {
+            Logger.getLogger(TestGetListOfTrainswillCallAtStation.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @BeforeClass
@@ -48,18 +58,19 @@ public class TestGetListTrainAtPlatform {
     //
     // @Test
     @Test
-    public void getListTrainAtPlatform(){
-        try {
-            TrainInfomation trainStation = new TrainInfomation();
-            ArrayList<TrainInfo> trainAtPlatform = trainStation.getListTrainAtPlatform("3");
+    public void TestIfMethodOutputsInfomation(){
+    
+            trainAtPlatform = trainStation.getListTrainAtPlatform("3");
             if(trainAtPlatform.size() != 0){
                 assertTrue(true);
             }
             else{
                 assertTrue("No data is returned", false);
             }
-        } catch (ParseException ex) {
-            Logger.getLogger(TestGetListTrainAtPlatform.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
+    }
+    @Test
+    public void TestIfNoTrainsAtPlatform(){
+        
     }
 }

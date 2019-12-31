@@ -5,6 +5,7 @@
  */
 package integrationTest;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,14 +18,24 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import traininfomation.TrainInfo;
 import traininfomation.TrainInfomation;
+import webconnect.WebConnection;
 
 /**
  *
  * @author dan
  */
 public class TestGetListOfTrainswillCallAtStation {
-    
+    private WebConnection Con;
+    private ArrayList<TrainInfo> trainAtcall;
+    private TrainInfomation trainStation;
     public TestGetListOfTrainswillCallAtStation() {
+        try {
+            this.Con = new WebConnection();
+            Con.getJson();
+            trainStation = new TrainInfomation();
+        } catch (ParseException ex) {
+            Logger.getLogger(TestGetListOfTrainswillCallAtStation.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @BeforeClass
@@ -44,18 +55,16 @@ public class TestGetListOfTrainswillCallAtStation {
     }
 
     @Test
-    public void getListTrainCallAtStation(){
-        try {
-            TrainInfomation trainStation = new TrainInfomation();
-            ArrayList<TrainInfo> trainAtcall = trainStation.getListOfTrainswillCallAtStation("Totnes","Plymouth");
+    public void TestIfMethodOutputsInfomation(){
+       
+            
+            trainAtcall = trainStation.getListOfTrainswillCallAtStation("Totnes","Plymouth");
             if(trainAtcall.size() != 0){
                 assertTrue(true);
             }
             else{
                 assertTrue("No data is returned", false);
             }
-        } catch (ParseException ex) {
-            Logger.getLogger(TestGetListTrainAtPlatform.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
     }
 }

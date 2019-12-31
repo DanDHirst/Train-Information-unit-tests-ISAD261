@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-import unittest.TestGetListOfTrainswillCallAtStation;
+import unittest.TestGetListOfTrainswillAtStation;
 import unittest.TestListOfTrainsAtPlatform;
 import unittest.TestListofTrainsCallBy;
 
@@ -20,7 +20,7 @@ import unittest.TestListofTrainsCallBy;
  * @author dan
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({TestGetListOfTrainswillCallAtStation.class, TestListOfTrainsAtPlatform.class , TestListofTrainsCallBy.class , TestOverDueTrains.class})
+@Suite.SuiteClasses({TestGetListOfTrainswillAtStation.class, TestListOfTrainsAtPlatform.class , TestListofTrainsCallBy.class , TestOverDueTrains.class})
 public class UnitTest {
 
     @BeforeClass
