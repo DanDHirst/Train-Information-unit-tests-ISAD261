@@ -67,51 +67,29 @@ public class TestGetListOfTrainswillCallAtStation {
             }
        
     }
-    public void TestCheckCorrectValues(){
-        trainAtcall = trainStation.getListOfTrainswillCallAtStation("Plymouth", "Liskeard");
-        assertEquals("check name is Plymouth", trainAtcall.get(0).getName(), "Plymouth");
-        assertEquals("check arrival time is 1029", trainAtcall.get(0).getArrives(), "1029");
-        assertEquals("check depart time is 1033", trainAtcall.get(0).getDeparts(), "1033");
+    @Test
+    public void TestIfNoTrainsAtStations() {
         
-        assertEquals("check name is Liskeard", trainAtcall.get(1).getName(), "Liskeard");
-        assertEquals("check arrival time is 1100", trainAtcall.get(1).getArrives(), "1100");
-        assertEquals("check depart time is 1101", trainAtcall.get(1).getDeparts(), "1101");
-
+        this.trainAtcall = this.trainStation.getListOfTrainswillCallAtStation("Saltash", "NoWhere567");
+        if (trainAtcall.size() == 0) {
+            assertTrue("There is no trains for this platform", true);
+        }
+        else {
+            assertTrue("The program returned infomation when it shouldn't have", false);
+        }
     }
-    @Test 
-    public void TestCheckOrderOfTimes(){
-        trainAtcall = trainStation.getListOfTrainswillCallAtStation("Teignmouth", "Dawlish");
-        assertEquals("check arrival time is 1028", trainAtcall.get(0).getArrives(), "1028");
-        assertEquals("check depart time is 1029", trainAtcall.get(0).getDeparts(), "1029");
+    @Test
+    public void TestIfArrivalTimeGreaterThanLastTrainsDepartTime() {
         
-        assertEquals("check arrival time is 1033", trainAtcall.get(1).getArrives(), "1033");
-        assertEquals("check depart time is 1034", trainAtcall.get(1).getDeparts(), "1034");
+        this.trainAtcall = this.trainStation.getListOfTrainswillCallAtStation("Totnes", "Plymouth");
+        for (int i = 1; i < trainAtcall.size()-1; i+=2) {
+            if (Integer.parseInt(trainAtcall.get(i-1).getDeparts()) > Integer.parseInt(trainAtcall.get(i).getArrives())) {
+                assertTrue("The depart time of the last train is greater than the arrival time of current train", false);
+            }
+        }
+        assertTrue(true);
+        
     }
     
-    @Test 
-    public void TestCheckTheSourceAndDestinationSize(){
-        trainAtcall = trainStation.getListOfTrainswillCallAtStation("Saltash", "Par");
-        if (trainAtcall.size() % 2 ==0) {
-            assertTrue("There is an even amount of objects", true);
-        }
-        else{
-            assertTrue("There is an odd number of objects", false);
-        }
-    }
-    @Test 
-    public void TestCheckIfOutputShouldBeNull(){
-        trainAtcall = trainStation.getListOfTrainswillCallAtStation("2323523", "45345");
-        if (trainAtcall.size() ==0) {
-            assertTrue("The program returned null", true);
-        }
-        else{
-            assertTrue("The program returned items when it shouldnt have", false);
-        }
-    }
-    @Test 
-    public void TestCheckIfMissedOutAnyTrains(){
-        trainAtcall = trainStation.getListOfTrainswillCallAtStation("Birmingham New Street", "Stockport");
-        assertEquals("There should only be two objects for this call", trainAtcall.size(),2);
-    }
-    
+   
 }

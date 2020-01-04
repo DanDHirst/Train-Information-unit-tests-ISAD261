@@ -81,85 +81,19 @@ public class TestGetListTrainAtPlatform {
         }
     }
     @Test
-    public void TestIfOutputCorrectTimes() {
+    public void TestIfStringBreaksProgram() {
         
-        this.trainAtPlatform = this.trainStation.getListTrainAtPlatform("3");
-        for (int i = 0; i < 5; i++) {
-            TrainInfo tr = trainAtPlatform.get(i);
-             if (i == 0) {
-                 if (tr.getArrives().equals("1021") && tr.getDeparts().equals("1023") ) {
-                     assertTrue("Correct Time", true);
-                 }
-                 else{
-                     assertTrue("Incorrect times should have been arrival:1021 and" + " depart: 1023" +  " and were Arrrival:" + tr.getArrives()+ " depart:"+ tr.getDeparts(), false);
-                 }
-             
-            }
-             else if(i==1){
-                 if (tr.getArrives().equals("1035") && tr.getDeparts().equals("1038") ) {
-                     assertTrue("Correct Time", true);
-                 }
-                 else{
-                     assertTrue("Incorrect times should have been arrival:1035 and" + " depart: 1038" +  " and were Arrrival:" + tr.getArrives()+ " depart:"+ tr.getDeparts(), false);
-                 }
-             }
-             else if(i==2){
-                 if (tr.getArrives().equals("1049") && tr.getDeparts().equals("1050") ) {
-                     assertTrue("Correct Time", true);
-                 }
-                 else{
-                     assertTrue("Incorrect times should have been arrival:1049 and" + " depart: 1050" +  " and were Arrrival:" + tr.getArrives()+ " depart:"+ tr.getDeparts(), false);
-                 }
-             }
-             else if(i==3){
-                 if (tr.getArrives().equals("1124") && tr.getDeparts().equals("1130") ) {
-                     assertTrue("Correct Time", true);
-                 }
-                 else{
-                     assertTrue("Incorrect times should have been arrival:1124 and" + " depart: 1130" +  " and were Arrrival:" + tr.getArrives()+ " depart:"+ tr.getDeparts(), false);
-                 }
-             }
-             else if(i==4){
-                 if (tr.getArrives().equals("1138") && tr.getDeparts().equals("1140") ) {
-                     assertTrue("Correct Time", true);
-                 }
-                 else{
-                     assertTrue("Incorrect times should have been arrival:1112 and" + " depart: 1117" +  " and were Arrrival:" + tr.getArrives()+ " depart:"+ tr.getDeparts(), false);
-                 }
-             }
-             
-             else{
-                 break;
-             }
+        this.trainAtPlatform = this.trainStation.getListTrainAtPlatform("Platform");
+        if (trainAtPlatform.size() == 0) {
+            assertTrue("There is no trains for this platform", true);
         }
-        
-    }
-    @Test 
-    public void TestCorrectOutputforPlatform(){
-        this.trainAtPlatform = this.trainStation.getListTrainAtPlatform("2");
-        assertEquals(trainAtPlatform.get(0).getName(), "Totnes");
-        assertEquals(trainAtPlatform.get(1).getName(), "Ivybridge");
-        assertEquals(trainAtPlatform.get(2).getName(), "Plymouth");
-        assertEquals(trainAtPlatform.get(3).getName(), "Saltash");
-        assertEquals(trainAtPlatform.get(4).getName(), "St Germans");
-        assertEquals(trainAtPlatform.get(5).getName(), "Liskeard");
-        assertEquals(trainAtPlatform.get(6).getName(), "Bodmin Parkway");
-        assertEquals(trainAtPlatform.get(7).getName(), "Par");
-        assertEquals(trainAtPlatform.get(8).getName(), "St Austell");
-        assertEquals(trainAtPlatform.get(9).getName(), "Truro");
-        assertEquals(trainAtPlatform.get(10).getName(), "Redruth");
-        assertEquals(trainAtPlatform.get(11).getName(), "Camborne");
-        assertEquals(trainAtPlatform.get(12).getName(), "Hayle");
-        assertEquals(trainAtPlatform.get(13).getName(), "St Erth");
-        assertEquals(trainAtPlatform.get(14).getName(), "Penzance");
-        
+        else {
+            assertTrue("The program returned infomation when it shouldn't have", false);
+        }
     }
     
-    @Test 
-    public void TestPlatformReturnNumber(){
-        this.trainAtPlatform = this.trainStation.getListTrainAtPlatform("2");
-        assertEquals("The platform returns amount of trains", trainAtPlatform.size(), 37);
-        
-    } 
+ 
+    
+
     
 }
