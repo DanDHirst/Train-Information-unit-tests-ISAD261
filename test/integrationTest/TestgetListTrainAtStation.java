@@ -90,68 +90,6 @@ public class TestgetListTrainAtStation {
         }
         
     }
-    @Test 
-    public void TestOutputDataisCorrect() {
-        
-        trainAtStation = trainStation.getListTrainAtStation("Plymouth");
-        if (trainAtStation.size() > 0) {
-            for (TrainInfo tr : trainAtStation) {
-                if (tr.getName().equals("Plymouth")) {
-                    if ("1029".equals(tr.getArrives())) {
-                        if ("1033".equals(tr.getDeparts())) {
-                            assertTrue("Station is correct", true);
-                            break;
-                        }
-                        else{
-                            assertTrue("The program the wrong depart time it should have returned 1033 instead of: " +tr.getDeparts(), false);
-                        }
-                    }
-                    else{
-                    assertTrue("The program the wrong arrival time it should have returned 1029 instead of: " +tr.getArrives(), false);
-                }
-                }
-                else{
-                    assertTrue("The program the wrong name it should have returned plymouth instead of: " +tr.getName(), false);
-                }
-            }
-            assertTrue("There is no trains for this String input", true);
-        }
-        else {
-            assertTrue("The program returned infomation when it should have", false);
-        }
-        
-    }
-    @Test 
-    public void TestNumberOfTrains(){
-        
-        trainAtStation = trainStation.getListTrainAtStation("Totnes");
-        if (trainAtStation.size() == 5) {
-            assertTrue("This the correct amount of trains", true);
-        }
-        else{
-            assertTrue("Program returned " + trainAtStation.size() + " and should have returned 1", false );
-        }
-    }
-    @Test 
     
-    public void TestCheckArrivalAndDepartTimes(){
-        
-        trainAtStation = trainStation.getListTrainAtStation("Saltash");
-        for(TrainInfo tr : trainAtStation){
-            if (tr.getArrives().equals("1041")) {
-                if (tr.getDeparts().equals("1042")) {
-                    assertTrue("Program returned the correct arrival and depart time", true);
-                    break;
-                }
-                else{
-                    assertTrue("The program returned The wrong depart time", false);
-                }
-            }
-            else{
-                assertTrue("The program returned The wrong arrival time", false);
-            }
-            
-        }
-    }
     
 }
