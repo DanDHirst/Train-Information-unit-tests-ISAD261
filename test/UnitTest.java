@@ -15,13 +15,14 @@ import unittest.TestGetListOfTrainswillAtStation;
 import unittest.TestListOfTrainsAtPlatform;
 import unittest.TestListofTrainsCallBy;
 import unittest.TestOverDueTrains;
+import unittest.TestTrainInfo;
 
 /**
  *
  * @author dan
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({TestGetListOfTrainswillAtStation.class, TestListOfTrainsAtPlatform.class , TestListofTrainsCallBy.class , TestOverDueTrains.class})
+@Suite.SuiteClasses({TestGetListOfTrainswillAtStation.class, TestListOfTrainsAtPlatform.class , TestListofTrainsCallBy.class , TestOverDueTrains.class,TestTrainInfo.class})
 public class UnitTest {
 
     @BeforeClass
