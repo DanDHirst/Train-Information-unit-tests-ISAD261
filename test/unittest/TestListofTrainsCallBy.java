@@ -107,6 +107,18 @@ public class TestListofTrainsCallBy {
         trainAtCallBymmock = mocktrainStation.getListOfTrainswillCallAtStation("Birmingham New Street", "Stockport");
         assertEquals("There should only be two objects for this call", trainAtCallBymmock.size(),2);
     }
+    @Test
+    public void TestIfArrivalTimeGreaterThanLastTrainsDepartTime() {
+        
+        this.trainAtCallBymmock = this.mocktrainStation.getListOfTrainswillCallAtStation("Totnes", "Plymouth");
+        for (int i = 1; i < trainAtCallBymmock.size()-1; i+=2) {
+            if (Integer.parseInt(trainAtCallBymmock.get(i-1).getDeparts()) > Integer.parseInt(trainAtCallBymmock.get(i).getArrives())) {
+                assertTrue("The depart time of the last train is greater than the arrival time of current train", false);
+            }
+        }
+        assertTrue(true);
+        
+    }
     
     
     

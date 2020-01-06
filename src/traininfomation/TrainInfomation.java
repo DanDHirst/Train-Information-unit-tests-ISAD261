@@ -142,6 +142,10 @@ public class TrainInfomation {
         
         return trainMessage;
     }
+
+    public JSONArray getJsons() {
+        return jsons;
+    }
     
 }
 

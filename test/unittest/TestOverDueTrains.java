@@ -95,5 +95,10 @@ public class TestOverDueTrains {
         assertEquals("time is 1030 so should be late",trainOverDueMock.size(),1);
         
     }
+    @Test
+    public void TestProgramInvalidStation(){
+        trainOverDueMock = this.mocktrainStation.getOverdueTrains("A Station", 2000);
+        assertTrue("check if the method returns null if there is no overdue trains", trainOverDueMock.size() == 0);
+    }
     
 }

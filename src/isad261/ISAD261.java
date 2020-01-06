@@ -61,26 +61,27 @@ public class ISAD261 {
     ArrayList<TrainInfo> trainAtStation = trainStation.getListTrainAtStation("Castle Cary");
     ArrayList<TrainInfo> trainAtPlatform = trainStation.getListTrainAtPlatform("3");
     ArrayList<TrainInfo> trainAtcall = trainStation.getListOfTrainswillCallAtStation("Totnes","Plymouth");
-    ArrayList<String> trainOverdue = trainStation.getOverdueTrains("Plymouth", 1100);
-    for(TrainInfo tr : trainAtStation){
-        System.out.println(tr.getName());
-        System.out.println(tr.getArrives());
-        System.out.println(tr.getDeparts());
-    }
+    ArrayList<String> trainOverdue = trainStation.getOverdueTrains("Plymouth", 1000);
+//    for(TrainInfo tr : trainAtStation){
+//        System.out.println(tr.getName());
+//        System.out.println(tr.getArrives());
+//        System.out.println(tr.getDeparts());
+//    }
     for(String over : trainOverdue){
         System.out.println(over);
     }
         
     
-    MockWebConnection mock = new MockWebConnection();
-    mock.getJson();
-    TrainInfomation mocktrainStation = new TrainInfomation("mock");
-    ArrayList<TrainInfo> trainAtStationmock = mocktrainStation.getListTrainAtStation("Plymouth");
-    for(TrainInfo tr : trainAtStationmock){
-        System.out.println(tr.getName());
-        System.out.println(tr.getArrives());
-        System.out.println(tr.getDeparts());
-    }
+//    MockWebConnection mock = new MockWebConnection();
+//    mock.getJson();
+//    TrainInfomation mocktrainStation = new TrainInfomation("mock");
+//    ArrayList<TrainInfo> trainAtStationmock = mocktrainStation.getListTrainAtStation("Plymouth");
+//    for(TrainInfo tr : trainAtStationmock){
+//        System.out.println(tr.getName());
+//        System.out.println(tr.getArrives());
+//        System.out.println(tr.getDeparts());
+//    }
+//    }
     }
     //JSON parser object to parse read file
         
