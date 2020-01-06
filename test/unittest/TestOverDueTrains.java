@@ -64,29 +64,29 @@ public class TestOverDueTrains {
     // @Test
     // public void hello() {}
     @Test
-    public void TestProgramOutputsValidString(){
+    public void testProgramOutputsValidString(){
         trainOverDueMock = this.mocktrainStation.getOverdueTrains("Saltash", 1050);
         assertEquals("Check message is valid", "The train arriving at Saltash for 1041 is Overdue. We are sorry for any inconvenience this may have caused you!", trainOverDueMock.get(0));
         
     }
     @Test
-    public void TestProgramInvalidStationTime(){
+    public void testProgramInvalidStationTime(){
         trainOverDueMock = this.mocktrainStation.getOverdueTrains("Plymouths", 2000);
         assertTrue("check if the method returns null if there is no overdue trains", trainOverDueMock.size() == 0);
     }
     @Test
-    public void TestCheckIfNumberOfOverdueTrainsIsCorrect(){
+    public void testCheckIfNumberOfOverdueTrainsIsCorrect(){
         trainOverDueMock = this.mocktrainStation.getOverdueTrains("Liskeard", 1500);
         assertTrue("check if the method returns all the overdue trains", trainOverDueMock.size() == 1);
     }
     @Test
-    public void TestCheckDoesntCrashWhenDispatchIsNull(){
+    public void testCheckDoesntCrashWhenDispatchIsNull(){
         trainOverDueMock = this.mocktrainStation.getOverdueTrains("Penzance", 1500);
         assertTrue("check if the method returns all the overdue train that have null at the end", trainOverDueMock.size() == 1);
     }
     
     @Test
-    public void TestCheckTheEdgeCasesOfTheTime(){
+    public void testCheckTheEdgeCasesOfTheTime(){
         trainOverDueMock = this.mocktrainStation.getOverdueTrains("Plymouth", 1028);
         assertEquals("time is 1028 so should not be late",trainOverDueMock.size(), 0);
         trainOverDueMock = this.mocktrainStation.getOverdueTrains("Plymouth", 1029);
@@ -96,7 +96,7 @@ public class TestOverDueTrains {
         
     }
     @Test
-    public void TestProgramInvalidStation(){
+    public void testProgramInvalidStation(){
         trainOverDueMock = this.mocktrainStation.getOverdueTrains("A Station", 2000);
         assertTrue("check if the method returns null if there is no overdue trains", trainOverDueMock.size() == 0);
     }

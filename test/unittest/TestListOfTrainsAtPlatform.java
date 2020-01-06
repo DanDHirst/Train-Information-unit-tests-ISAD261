@@ -57,7 +57,7 @@ public class TestListOfTrainsAtPlatform {
     }
 
     @Test
-    public void TestIfNoTrainsAtPlatform() {
+    public void testIfNoTrainsAtPlatform() {
         
         this.trainAtPlatformmock = this.mocktrainStation.getListTrainAtPlatform("10010");
         if (trainAtPlatformmock.size() == 0) {
@@ -68,7 +68,7 @@ public class TestListOfTrainsAtPlatform {
         }
     }
     @Test
-    public void TestIfOutputCorrectTimes() {
+    public void testIfOutputCorrectTimes() {
         
         this.trainAtPlatformmock = this.mocktrainStation.getListTrainAtPlatform("3");
         for (int i = 0; i < 5; i++) {
@@ -121,7 +121,7 @@ public class TestListOfTrainsAtPlatform {
         }
     }
     @Test 
-    public void TestCorrectOutputforPlatform(){
+    public void testCorrectOutputforPlatform(){
         this.trainAtPlatformmock = this.mocktrainStation.getListTrainAtPlatform("2");
         assertEquals(trainAtPlatformmock.get(0).getName(), "Totnes");
         assertEquals(trainAtPlatformmock.get(1).getName(), "Ivybridge");
@@ -141,7 +141,7 @@ public class TestListOfTrainsAtPlatform {
         
     }
     @Test 
-    public void TestPlatformReturnNumber(){
+    public void testPlatformReturnNumber(){
         this.trainAtPlatformmock = this.mocktrainStation.getListTrainAtPlatform("2");
         assertEquals("The platform returns amount of trains", trainAtPlatformmock.size(), 15);
         

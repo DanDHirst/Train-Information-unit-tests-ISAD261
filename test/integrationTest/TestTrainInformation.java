@@ -52,7 +52,7 @@ public class TestTrainInformation {
     public void tearDown() {
     }
     @Test
-    public void TestIfJsonDataLoaded(){
+    public void testIfJsonDataLoaded(){
         if (trainStation.getJsons() != null) {
             assertTrue("The program returned data", true);
         }
@@ -61,7 +61,7 @@ public class TestTrainInformation {
         }
     }
     @Test
-    public void TestIfStationMethodOutputsInfomation() {
+    public void testIfStationMethodOutputsInfomation() {
         ArrayList<TrainInfo> trainAtStation = null;
         trainAtStation = trainStation.getListTrainAtStation("Plymouth");
         if(trainAtStation.size() != 0){
@@ -72,7 +72,7 @@ public class TestTrainInformation {
         }
     }
     @Test
-    public void TestIfPlatormMethodOutputsInfomation(){
+    public void testIfPlatormMethodOutputsInfomation(){
             ArrayList<TrainInfo> trainAtPlatform = null;
             trainAtPlatform = trainStation.getListTrainAtPlatform("3");
             if(trainAtPlatform.size() != 0){
@@ -84,7 +84,7 @@ public class TestTrainInformation {
        
     }
     @Test
-    public void TestIfCallByMethodOutputsInfomation(){
+    public void testIfCallByMethodOutputsInfomation(){
        
             ArrayList<TrainInfo> trainAtcall = null;
             trainAtcall = trainStation.getListOfTrainswillCallAtStation("Totnes","Plymouth");
@@ -97,7 +97,7 @@ public class TestTrainInformation {
        
     }
     @Test
-     public void TestIfOverdueMethodOutputsInfomation(){
+     public void testIfOverdueMethodOutputsInfomation(){
             ArrayList<TrainInfo> trainOverdue = null;
             trainOverdue = trainStation.getOverdueTrains("Plymouth", 1100);
             if(trainOverdue.size() != 0){
@@ -111,7 +111,7 @@ public class TestTrainInformation {
      
      
      @Test
-    public void TestIfNoTrainsAtStation(){
+    public void testIfNoTrainsAtStation(){
         ArrayList<TrainInfo> trainAtStation = null;
         trainAtStation = trainStation.getListTrainAtStation("A Station that doesnt exist");
         if (trainAtStation.size() == 0) {
@@ -122,7 +122,7 @@ public class TestTrainInformation {
         }
     }
     @Test
-    public void TestIfNoTrainsAtPlatform() {
+    public void testIfNoTrainsAtPlatform() {
         ArrayList<TrainInfo> trainAtPlatform = null;
         trainAtPlatform = this.trainStation.getListTrainAtPlatform("10010");
         if (trainAtPlatform.size() == 0) {
@@ -134,7 +134,7 @@ public class TestTrainInformation {
     }
     
     @Test
-    public void TestIfNoTrainsAtCallByStation() {
+    public void testIfNoTrainsAtCallByStation() {
         ArrayList<TrainInfo> trainAtcall = null;
         trainAtcall = this.trainStation.getListOfTrainswillCallAtStation("Saltash", "NoWhere567");
         if (trainAtcall.size() == 0) {
@@ -145,7 +145,7 @@ public class TestTrainInformation {
         }
     }
     @Test
-    public void TestProgramInvalidStationTime(){
+    public void testProgramInvalidStationTime(){
         ArrayList<TrainInfo> trainOverdue = null;
         trainOverdue = this.trainStation.getOverdueTrains("Plymouth", 1000);
         assertTrue("check if the method returns null if there is no overdue trains", trainOverdue.size() == 0);

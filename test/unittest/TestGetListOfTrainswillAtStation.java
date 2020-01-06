@@ -65,7 +65,7 @@ public class TestGetListOfTrainswillAtStation {
     //
     
     @Test
-    public void TestIfNoTrainsAtStation() {
+    public void testIfNoTrainsAtStation() {
         
         trainAtStationmock = this.mocktrainStation.getListTrainAtStation("Station24621");
         if (trainAtStationmock.size() == 0) {
@@ -76,7 +76,7 @@ public class TestGetListOfTrainswillAtStation {
         }
     }
     @Test 
-    public void TestInputString() {
+    public void testInputString() {
         trainAtStationmock = this.mocktrainStation.getListTrainAtStation("3");
         if (trainAtStationmock.size() == 0) {
             assertTrue("There is no trains for this String input", true);
@@ -87,7 +87,7 @@ public class TestGetListOfTrainswillAtStation {
         
     }
     @Test 
-    public void TestOutputDataisCorrect() {
+    public void testOutputDataisCorrect() {
         
         trainAtStationmock = mocktrainStation.getListTrainAtStation("Plymouth");
         if (trainAtStationmock.size() > 0) {
@@ -117,7 +117,7 @@ public class TestGetListOfTrainswillAtStation {
         
     }
     @Test 
-    public void TestNumberOfTrains(){
+    public void testNumberOfTrains(){
         
         trainAtStationmock = mocktrainStation.getListTrainAtStation("Totnes");
         if (trainAtStationmock.size() == 1) {
@@ -128,7 +128,7 @@ public class TestGetListOfTrainswillAtStation {
         }
     }
     @Test 
-    public void TestCheckArrivalAndDepartTimes(){
+    public void testCheckArrivalAndDepartTimes(){
         
         trainAtStationmock = mocktrainStation.getListTrainAtStation("Saltash");
         for(TrainInfo tr : trainAtStationmock){
